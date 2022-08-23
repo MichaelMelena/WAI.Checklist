@@ -1,0 +1,54 @@
+﻿@using WAI.Checklist.Models
+
+
+<article>
+    <h2>WAI 2.1 Checklist: </h2>
+    <label for="checklist-name">Name</label>
+    <input id="checklist-name" type="text" />
+    <fieldset>
+        <legend>Conformance level</legend>
+        <div>
+            <input id="level-a" name="conformance-level" type="radio" value="A" checked/>
+            <label for="level-a">A</label>
+        </div>
+
+        <div>
+            <input id="level-aa" name="conformance-level" type="radio" value="AA" />
+            <label for="level-aa">AA</label>
+        </div>
+
+        <div>
+            <input id="level-aaa" name="conformance-level" type="radio" value="AAA" />
+            <label for="level-aaa">AAA</label>
+        </div>
+
+    </fieldset>
+    <hr />
+
+    @if (Items is not null)
+    {
+
+
+        @for (int i = 0; i < Items!.Count; i++)
+        {
+            <section>
+                <h3>@Sections[i]</h3>
+                <hr />
+                <ul>
+                    @foreach (ChecklistItem item in Items[i])
+                    {
+                        <li>
+
+                            <b>@item.Id</b>
+                            <input id="@item.Id" type="checkbox" />
+                            <label for="@item.Id">@item.Name <b>level-@item.Level</b></label>
+
+
+                            <a href="@item.Uri" title="@item.Id @item.Name WAI 2.1">detail</a>
+                        </li>
+                    }
+                </ul>
+            </section>
+        }
+    }
+</article>
