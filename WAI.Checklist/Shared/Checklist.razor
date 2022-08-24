@@ -5,30 +5,29 @@
     <h2>WAI 2.1 Checklist: </h2>
     <label for="checklist-name">Name</label>
     <input id="checklist-name" type="text" />
-    <fieldset>
-        <legend>Conformance level</legend>
-        <div>
-            <input id="level-a" name="conformance-level" type="radio" value="A" checked/>
-            <label for="level-a">A</label>
-        </div>
 
-        <div>
-            <input id="level-aa" name="conformance-level" type="radio" value="AA" />
-            <label for="level-aa">AA</label>
-        </div>
+    <EditForm EditContext="new EditContext(SelectedLevel)">
 
-        <div>
-            <input id="level-aaa" name="conformance-level" type="radio" value="AAA" />
-            <label for="level-aaa">AAA</label>
-        </div>
+        <InputRadioGroup TValue="Level" Name="Conformance level" @bind-Value="SelectedLevel">
+            <fieldset>
+                <legend>Conformance level:</legend>
+                <label for="level-A">A</label>
+                <InputRadio id="level-A" TValue="Level" Name="Conformance level" Value="Level.A" />
 
-    </fieldset>
+                <label for="level-AA">AA</label>
+                <InputRadio id="level-AA" TValue="Level" Name="Conformance level" Value="Level.AA" />
+
+                <label for="level-AAA">AAA</label>
+                <InputRadio id="level-AAA" TValue="Level" Name="Conformance level" Value="Level.AAA" />
+            </fieldset>
+        </InputRadioGroup>
+        <button @onclick="HandleConformanceButtonClickAsync">Choose conformance</button>
+
+    </EditForm>
     <hr />
 
     @if (Items is not null)
     {
-
-
         @for (int i = 0; i < Items!.Count; i++)
         {
             <section>

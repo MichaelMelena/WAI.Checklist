@@ -4,7 +4,7 @@ using WAI.Checklist.Models;
 
 namespace WAI.Checklist.Services
 {
-    public class GuidlineService : IGuidlineService
+    public class GuidlineProvider : IGuidlineProvider
     {
         private const string ResourceName = "WAI.Checklist.Data.Items.json";
         private readonly IGuidelineParser guidelineParser;
@@ -12,7 +12,7 @@ namespace WAI.Checklist.Services
         private bool IsReady { get; set; } = false;
         private List<Guideline> Items { get; set; } = new List<Guideline>();
 
-        public GuidlineService(IGuidelineParser guidelineParser)
+        public GuidlineProvider(IGuidelineParser guidelineParser)
         {
             this.guidelineParser = guidelineParser;
         }
@@ -57,7 +57,6 @@ namespace WAI.Checklist.Services
 
             IsReady = true;
         }
-
 
     }
 }

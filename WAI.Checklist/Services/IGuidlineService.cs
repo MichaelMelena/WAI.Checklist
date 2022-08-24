@@ -2,7 +2,7 @@
 
 namespace WAI.Checklist.Services
 {
-    public interface IGuidlineService
+    public interface IGuidlineProvider
     {
         Task<List<ChecklistItem>> FilterAsync(Level level, bool includePreviousLevels = true);
     }

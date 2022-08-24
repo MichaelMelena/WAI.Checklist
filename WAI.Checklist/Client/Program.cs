@@ -1,3 +1,4 @@
+using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using WAI.Checklist.Services;
@@ -21,8 +22,13 @@ namespace WAI.Checklist
 
         public static void AddServices(IServiceCollection services)
         {
+            services.AddBlazoredLocalStorage();
+
             services.AddSingleton<IGuidelineParser, GuidelineParser>();
-            services.AddSingleton<IGuidlineService, GuidlineService>();
+            services.AddSingleton<IGuidlineProvider, GuidlineProvider>();
+
+            services.AddScoped<IProjecLocalStorage, ProjecLocalStorage>();
+            
         }
     }
 }
